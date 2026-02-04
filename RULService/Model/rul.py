@@ -1,14 +1,9 @@
 import joblib
 import pandas as pd
-import numpy as np
-from pathlib import Path
 
-# Configuration
+
 MODEL_PATH = "Models/lr_rul_pipeline.joblib"
-
-
 SENSOR_NAMES = [f"s_{i+1}" for i in range(21)]
-
 
 
 def load_model(model_path=MODEL_PATH):
@@ -17,36 +12,6 @@ def load_model(model_path=MODEL_PATH):
     print(f"Model loaded from: {model_path}")
     return model
 
-
-sample_data = {
-  "s_1": 0.0,
-  "s_2": 0.421876,
-  "s_3": 0.512349,
-  "s_4": 0.0,
-  "s_5": 1.0,
-  "s_6": 0.492156,
-  "s_7": 0.334521,
-  "s_8": 0.198765,
-  "s_9": 0.0,
-  "s_10": 0.389234,
-  "s_11": 0.578912,
-  "s_12": 0.312456,
-  "s_13": 0.167890,
-  "s_14": 0.456123,
-  "s_15": 0.0,
-  "s_16": 0.423567,
-  "s_17": 0.0,
-  "s_18": 0.0,
-  "s_19": 0.467823,
-  "s_20": 0.534219,
-  "s_21": 0.601234
-}
-
-
-def prepare_single_input(sensor_dict: dict) -> pd.DataFrame:
-    """
-    Convert sensor dictionary to DataFrame for prediction.
-    """
 
 class RULPredictor:
     def __init__(self, model_path: str = MODEL_PATH):
@@ -69,24 +34,5 @@ class RULPredictor:
         sensor_pd = pd.DataFrame([sensor_dict])
 
         return self.model.predict(sensor_pd)[0]
-
-
-def main():
-    # Load model
-    model = load_model()
-
-    # Single prediction
-    print("\n--- Single Prediction ---")
-
-
-    predictor = RULPredictor()
-    rul = predictor.predict(sample_data)
-
-    print(f"Predicted RUL: {rul:.2f} cycles")
-
-
-if __name__ == "__main__":
-    main()
-
 
 

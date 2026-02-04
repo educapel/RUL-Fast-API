@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# Jupyter
+.ipynb_checkpoints/
+Notebooks/
+
+# Data files (if large)
+CMAPSSData/
+
+# Scripts (not needed in container)
+Scripts/
+
+# Tests
+**/Test/
+**/*test*.py
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Documentation
+README.md
+*.md
