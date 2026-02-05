@@ -1,8 +1,13 @@
-FROM python:3.13.2
+FROM python:3.13.2-slim-bookworm
 
 RUN pip install uv
 
+## envything in the env is globally available
+
 WORKDIR /app
+
+ENV PATH="/app/ •venv/bin: $PATH"
+
 
 # Copy dependency files
 COPY .python-version pyproject.toml uv.lock ./
